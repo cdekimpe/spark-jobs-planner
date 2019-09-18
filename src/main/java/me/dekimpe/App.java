@@ -18,7 +18,7 @@ public class App
         SparkConf conf = new SparkConf()
                 .set("spark.executor.extraClassPath", "/home/hadoop/*:")
                 .setAppName("Spark Jobs Planner")
-                .set("spark.executor.instances", "2")
+                .set("spark.executor.instances", "1")
                 .set("spark.executor.cores", "1")
                 .setMaster("spark://192.168.10.14:7077");
         
