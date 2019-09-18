@@ -28,13 +28,16 @@ public class App
         Date date;
         while(true) {
             date = new Date();
+            System.out.println(date);
             Calendar cal = Calendar.getInstance();
             cal.setTime(date);
             int currentHour = cal.get(Calendar.HOUR_OF_DAY);
             if(hour != currentHour) {
                 System.out.println("Launching new 'Spark Tweets - Top 10'...");
                 SparkLauncher sparkLauncher = new SparkLauncher()
-                        .addJar("/home/hadoop/tweets-spark-top-10/target/tweets-spark-top-10-1.0-SNAPSHOT-jar-with-dependencies.jar")
+                        .setMaster("spark://192.168.10.14:7077")
+                        .setMainClass("me.dekimpe.App")
+                        .addAppArgs("/home/hadoop/tweets-spark-top-10/target/tweets-spark-top-10-1.0-SNAPSHOT-jar-with-dependencies.jar")
                         .addSparkArg("--packages", "org.apache.spark:spark-avro_2.11:2.4.3");
                 hour = currentHour;
             }
