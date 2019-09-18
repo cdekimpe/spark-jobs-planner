@@ -21,9 +21,11 @@ public class App
             cal.setTime(date);
             int currentHour = cal.get(Calendar.HOUR_OF_DAY);
             if(hour != currentHour) {
+                System.out.println("Launching new 'Spark Tweets - Top 10'...");
                 SparkLauncher sparkLauncher = new SparkLauncher()
                         .addFile("/home/hadoop/tweets-spark-top-10/target/tweets-spark-top-10-1.0-SNAPSHOT-jar-with-dependencies.jar")
                         .addSparkArg("--packages", "org.apache.spark:spark-avro_2.11:2.4.3");
+                hour = currentHour;
             }
             TimeUnit.SECONDS.sleep(10);
         }
