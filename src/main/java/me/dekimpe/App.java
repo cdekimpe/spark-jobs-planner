@@ -13,7 +13,7 @@ public class App
 {
     public static void main( String[] args ) throws InterruptedException
     {
-        int hour = 0;
+        int hour = 25;
         Date date;
         while(true) {
             date = new Date();
