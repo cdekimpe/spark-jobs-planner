@@ -3,6 +3,8 @@ package me.dekimpe;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
+import org.apache.spark.SparkConf;
+import org.apache.spark.api.java.JavaSparkContext;
 import org.apache.spark.launcher.SparkLauncher;
 
 /**
@@ -13,6 +15,13 @@ public class App
 {
     public static void main( String[] args ) throws InterruptedException
     {
+        SparkConf conf = new SparkConf()
+                .set("spark.executor.extraClassPath", "/home/hadoop/*:")
+                .setAppName("Spark Jobs Planner")
+                .setMaster("spark://192.168.10.14:7077");
+        
+        JavaSparkContext sc = new JavaSparkContext(conf);
+
         int hour = 25;
         Date date;
         while(true) {
